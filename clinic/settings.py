@@ -57,6 +57,11 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "accounts.backends.EmailOrUsernameBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 ROOT_URLCONF = "clinic.urls"
 
 TEMPLATES = [
@@ -106,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "accounts.Patient"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

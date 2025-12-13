@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Clinic Bootstrap Template</title>
+  {% block title %}<title>Clinic-Health - Best clinic for you health</title>{% endblock %}
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -115,7 +115,7 @@
 
               <ul>
                 <li>
-                  <a href="{% url 'accounts:profile' pk=patient.id %}">Profile</a>
+                  <a href="{% url 'accounts:profile' pk=user.id %}">Profile</a>
                 </li>
 
                 <li>
