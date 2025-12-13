@@ -28,4 +28,4 @@ class Patient(AbstractUser):
     )
 
     def __str__(self):
-        return f"Patient: {self.get_full_name() or self.username}"
+        return f"User: {self.get_full_name() or self.username}"

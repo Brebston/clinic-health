@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Clinic-Health - Testimonials{% endblock %}
+
 {% block content %}
 <main class="main">
 
@@ -22,7 +26,7 @@
     <nav class="breadcrumbs">
       <div class="container">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{% url 'core:index' %}">Home</a></li>
           <li class="current">Testimonials</li>
         </ol>
       </div>
@@ -80,7 +84,7 @@
               </div>
               <p>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</p>
               <div class="profile">
-                <img src="assets/img/person/person-m-9.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-9.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>Marcus Chen <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@marcuschen</span>
@@ -101,7 +105,7 @@
               </div>
               <p>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</p>
               <div class="profile">
-                <img src="assets/img/person/person-f-5.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-5.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>Sarah Mitchell <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@sarahmitch</span>
@@ -122,7 +126,7 @@
               </div>
               <p>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore.</p>
               <div class="profile">
-                <img src="assets/img/person/person-f-12.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-12.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>James Wilson <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@jwilson</span>
@@ -143,7 +147,7 @@
               </div>
               <p>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa.</p>
               <div class="profile">
-                <img src="assets/img/person/person-m-12.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-12.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>Emma Rodriguez <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@emmarod</span>
@@ -164,7 +168,7 @@
               </div>
               <p>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</p>
               <div class="profile">
-                <img src="assets/img/person/person-m-13.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-13.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>David Kumar <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@davidkumar</span>
@@ -185,7 +189,7 @@
               </div>
               <p>Texit tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</p>
               <div class="profile">
-                <img src="assets/img/person/person-f-13.webp" class="testimonial-img" alt="" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-13.webp' %}" class="testimonial-img" alt="" loading="lazy">
                 <div class="info">
                   <h4>Sophia Lee <i class="bi bi-patch-check-fill"></i></h4>
                   <span>@sophialee</span>
@@ -223,7 +227,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-m-3.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-3.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>Michael Anderson</h5>
                   <span>Software Developer</span>
@@ -249,7 +253,7 @@
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-f-5.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-5.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>Sophia Martinez</h5>
                   <span>Marketing Specialist</span>
@@ -275,7 +279,7 @@
             <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-m-7.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-7.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>David Wilson</h5>
                   <span>Graphic Designer</span>
@@ -301,7 +305,7 @@
             <p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-f-9.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-9.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>Emily Johnson</h5>
                   <span>UX Designer</span>
@@ -327,7 +331,7 @@
             <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-f-11.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-f-11.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>Olivia Thompson</h5>
                   <span>Entrepreneur</span>
@@ -353,7 +357,7 @@
             <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <img src="assets/img/person/person-m-12.webp" alt="Author" class="img-fluid rounded-circle" loading="lazy">
+                <img src="{% static 'assets/img/person/person-m-12.webp' %}" alt="Author" class="img-fluid rounded-circle" loading="lazy">
                 <div>
                   <h5>James Taylor</h5>
                   <span>Financial Analyst</span>

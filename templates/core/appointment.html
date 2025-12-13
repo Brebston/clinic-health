@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% block title %}Clinic-Health - Appoinment{% endblock %}
+
 {% block content %}
 <main class="main">
 
@@ -22,7 +25,7 @@
     <nav class="breadcrumbs">
       <div class="container">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{% url 'core:index' %}">Home</a></li>
           <li class="current">Appointment</li>
         </ol>
       </div>
@@ -73,7 +76,7 @@
             </div>
 
             <div class="appointment-form" data-aos="fade-up" data-aos-delay="400">
-              <form action="{% static 'forms/book-appointment.php' %}" method="post" class="php-email-form">
+              <form action="#" method="post" class="php-email-form">
                 <div class="row gy-4">
                   <div class="col-md-6">
                     <input type="text" name="name" class="form-control" placeholder="Full Name" required="">

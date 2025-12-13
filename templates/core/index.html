@@ -50,7 +50,7 @@
             </div>
 
             <div class="hero-actions" data-aos="fade-right" data-aos-delay="600">
-              <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
+              <a href="{% url 'core:appointment' %}" class="btn btn-primary">Book Appointment</a>
               <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-outline glightbox">
                 <i class="bi bi-play-circle me-2"></i>
                 Watch Our Story
@@ -199,7 +199,7 @@
                 <span><i class="bi bi-check-circle-fill"></i>24/7 Emergency Cardiac Care</span>
                 <span><i class="bi bi-check-circle-fill"></i>Minimally Invasive Procedures</span>
               </div>
-              <a href="department-details.html" class="specialty-link">
+              <a href="{% url 'core:department-details' %}" class="specialty-link">
                 Explore Cardiology <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -224,7 +224,7 @@
                 <span><i class="bi bi-check-circle-fill"></i>Advanced Brain Imaging</span>
                 <span><i class="bi bi-check-circle-fill"></i>Robotic Surgery</span>
               </div>
-              <a href="department-details.html" class="specialty-link">
+              <a href="{% url 'core:department-details' %}" class="specialty-link">
                 Explore Neurology <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -679,7 +679,7 @@
       </div>
 
       <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
-        <a href="doctors.html" class="btn-view-all">
+        <a href="{% url 'core:doctors' %}" class="btn-view-all">
           View All Doctors
           <i class="bi bi-arrow-right"></i>
         </a>

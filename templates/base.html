@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  {% block title %}<title>Clinic-Health - Best clinic for you health</title>{% endblock %}
+  <title>{% block title %}Clinic-Health - Best clinic for you health{% endblock %}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -73,36 +73,34 @@
                    class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">
               Home
             </a></li>
-            <li><a href="{% url 'core:about-page' %}"
-                   class="{% if request.resolver_match.url_name == 'about-page' %}active{% endif %}">
+            <li><a href="{% url 'core:about' %}"
+                   class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
               About
             </a></li>
-            <li><a href="{% url 'core:departament-page' %}"
-                   class="{% if request.resolver_match.url_name == 'departments-page' %}active{% endif %}">
+            <li><a href="{% url 'core:departament' %}"
+                   class="{% if request.resolver_match.url_name == 'departments' %}active{% endif %}">
               Departments
             </a></li>
-            <li><a href="{% url 'core:services-page' %}"
-                   class="{% if request.resolver_match.url_name == 'services-page' %}active{% endif %}">
+            <li><a href="{% url 'core:services' %}"
+                   class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
               Services
             </a></li>
-            <li><a href="{% url 'core:doctors-page' %}"
-              class="{% if request.resolver_match.url_name == 'doctors-page' %}active{% endif %}">
+            <li><a href="{% url 'core:doctors' %}"
+              class="{% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">
               Doctors
             </a></li>
             <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Department Details</a></li>
-                <li><a href="#">Service Details</a></li>
-                <li><a href="#">Appointment</a></li>
-                <li><a href="#">Testimonials</a></li>
-                <li><a href="#">Frequently Asked Questions</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">404</a></li>
+                <li><a href="{% url 'core:departament' %}">Department Details</a></li>
+                <li><a href="{% url 'core:services' %}">Service Details</a></li>
+                <li><a href="{% url 'core:appointment' %}">Appointment</a></li>
+                <li><a href="{% url 'core:testimonials' %}">Testimonials</a></li>
+                <li><a href="{% url 'core:faq' %}">Frequently Asked Questions</a></li>
+                <li><a href="{% url 'core:terms' %}">Terms</a></li>
+                <li><a href="{% url 'core:privacy' %}">Privacy</a></li>
               </ul>
             </li>
-            <li><a href="{% url 'core:contact-page' %}"
+            <li><a href="{% url 'core:contact' %}"
                    class="{% if request.resolver_match.url_name == 'contact-page' %}active{% endif %}">
               Contact
             </a></li>
