@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import Patient
+from accounts.models import Patient
+import logging
+logger = logging.getLogger(__name__)
 
 User = get_user_model()
 
@@ -11,15 +13,11 @@ class BootstrapMixin:
     def _apply_bootstrap(self):
         for name, field in self.fields.items():
             widget = field.widget
-
-            # bootstrap клас для інпутів/селектів
             base = widget.attrs.get("class", "")
             if isinstance(widget, (forms.CheckboxInput,)):
                 widget.attrs["class"] = (base + " form-check-input").strip()
             else:
                 widget.attrs["class"] = (base + " form-control").strip()
-
-            # placeholders (за бажанням)
             if "placeholder" not in widget.attrs and field.label:
                 widget.attrs["placeholder"] = field.label
 
@@ -33,21 +31,29 @@ class LoginForm(BootstrapMixin, AuthenticationForm):
 
 
 class RegisterForm(BootstrapMixin, UserCreationForm):
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    phone = forms.IntegerField(required=True)
+    email = forms.EmailField(required=True)
     date_of_birth = forms.DateField(
-        required=False,
+        required=True,
         widget=forms.DateInput(attrs={"type": "date"})
     )
-    ssn = forms.CharField(required=False, max_length=20)
-    address = forms.CharField(required=False, widget=forms.Textarea(attrs={"rows": 3}))
-    emergency_contact_name = forms.CharField(required=False, max_length=255)
-    emergency_contact_phone = forms.CharField(required=False, max_length=30)
+    ssn = forms.CharField(required=True, max_length=20)
+    address = forms.CharField(required=True)
+    emergency_contact_name = forms.CharField(required=True, max_length=255)
+    emergency_contact_phone = forms.CharField(required=True, max_length=30)
 
     class Meta:
         model = User
         fields = (
-            "username", "first_name", "last_name",
-            "email", "phone", "role",
-            "password1", "password2",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "password1",
+            "password2",
         )
 
     def __init__(self, *args, **kwargs):
@@ -58,18 +64,13 @@ class RegisterForm(BootstrapMixin, UserCreationForm):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
         user.phone = self.cleaned_data.get("phone", "")
-        user.role = self.cleaned_data["role"]
+        user.role = User.Roles.PATIENT
+        user.date_of_birth = self.cleaned_data.get("date_of_birth")
+        user.ssn = self.cleaned_data.get("ssn", "")
+        user.address = self.cleaned_data.get("address", "")
+        user.emergency_contact_name = self.cleaned_data.get("emergency_contact_name", "")
+        user.emergency_contact_phone = self.cleaned_data.get("emergency_contact_phone", "")
 
         if commit:
             user.save()
-
-            if user.role == User.Roles.PATIENT:
-                Patient.objects.create(
-                    user=user,
-                    date_of_birth=self.cleaned_data.get("date_of_birth"),
-                    ssn=self.cleaned_data.get("ssn", ""),
-                    address=self.cleaned_data.get("address", ""),
-                    emergency_contact_name=self.cleaned_data.get("emergency_contact_name", ""),
-                    emergency_contact_phone=self.cleaned_data.get("emergency_contact_phone", ""),
-                )
         return user

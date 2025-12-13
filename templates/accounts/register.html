@@ -16,10 +16,7 @@
 
             <form method="post" novalidate>
               {% csrf_token %}
-
-              <!-- Виводимо всю форму красиво через crispy -->
               {{ form|crispy }}
-
               <button type="submit" class="btn btn-primary w-100 mt-2">
                 Create account
               </button>
@@ -29,10 +26,6 @@
               <span class="text-muted">Already have an account?</span>
               <a href="{% url 'accounts:login' %}">Login</a>
             </div>
-
-            <small class="d-block text-muted mt-3">
-              Patient fields are used only if role = patient.
-            </small>
           </div>
         </div>
       </div>

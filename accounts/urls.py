@@ -1,7 +1,8 @@
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib.auth.views import LogoutView
 from django.urls import path, reverse_lazy
-from accounts.views import CustomLoginView, RegisterView, ProfileDetailView
+from accounts.views import (CustomLoginView, RegisterView,
+                            ProfileDetailView, ProfileUpdateView)
 
 
 urlpatterns = [
@@ -13,6 +14,7 @@ urlpatterns = [
     ),
     path("register/", RegisterView.as_view(), name="register"),
     path("profile/<int:pk>", ProfileDetailView.as_view(), name="profile"),
+    path("profile/<int:pk>/update/", ProfileUpdateView.as_view(), name="profile-update")
 ] + debug_toolbar_urls()
 
 app_name = "accounts"
