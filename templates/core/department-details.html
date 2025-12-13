@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Clinic-Health - Department Details{% endblock %}
+
 {% block content %}
 <main class="main">
 
@@ -22,7 +26,7 @@
     <nav class="breadcrumbs">
       <div class="container">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{% url 'core:index' %}">Home</a></li>
           <li class="current">Department Details</li>
         </ol>
       </div>
@@ -59,8 +63,8 @@
             </div>
 
             <div class="action-group">
-              <a href="appointment.html" class="btn-primary">Schedule Consultation</a>
-              <a href="services.html" class="btn-secondary">
+              <a href="{% url 'core:appointment' %}" class="btn-primary">Schedule Consultation</a>
+              <a href="{% url 'core:services' %}" class="btn-secondary">
                 <span>View All Services</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
