@@ -33,7 +33,9 @@ def service_details_page(request: HttpRequest) -> HttpResponse:
     return render(request, "core/service-details.html")
 
 def appointment_page(request: HttpRequest) -> HttpResponse:
-    return render(request, "core/appointment.html")
+    return render(request, "core/appointment.html", {
+        "specialties": DoctorProfile.Specialty.choices,
+    })
 
 def testimonials_page(request: HttpRequest) -> HttpResponse:
     return render(request, "core/testimonials.html")
