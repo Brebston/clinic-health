@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Clinic-Health - Appoinment{% endblock %}
 
@@ -77,7 +78,19 @@
 
             <div class="appointment-form" data-aos="fade-up" data-aos-delay="400">
               <form action="#" method="post" class="php-email-form">
+                {% csrf_token %}
                 <div class="row gy-4">
+                  {% if user.is_authenticated %}
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ request.user.get_full_name }}" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ request.user.email }}" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" value="{{ request.user.phone }}" readonly>
+                  </div>
+                  {% else %}
                   <div class="col-md-6">
                     <input type="text" name="name" class="form-control" placeholder="Full Name" required="">
                   </div>
@@ -87,31 +100,31 @@
                   <div class="col-md-6">
                     <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required="">
                   </div>
+                  {% endif %}
                   <div class="col-md-6">
-                    <select name="department" class="form-select" required="">
-                      <option value="">Select Department</option>
-                      <option value="general">General Consultation</option>
-                      <option value="cardiology">Cardiology</option>
-                      <option value="neurology">Neurology</option>
-                      <option value="orthopedics">Orthopedics</option>
-                      <option value="pediatrics">Pediatrics</option>
-                      <option value="dermatology">Dermatology</option>
-                      <option value="oncology">Oncology</option>
+                  <select id="specialtySelect"
+                    name="specialty"
+                    class="form-select"
+                    required
+                    data-endpoint="{% url 'doctors:doctors-by-specialty' %}">
+                      <option value="">Select Specialty</option>
+                      {% for value, label in specialties %}
+                        <option value="{{ value }}">{{ label }}</option>
+                      {% endfor %}
                     </select>
                   </div>
+                  {% if user.is_authenticated %}
                   <div class="col-md-6">
-                    <input type="date" name="date" class="form-control" required="">
+                    <input type="text" name="date" class="form-control" value="{{ request.user.date_of_birth|date:'d.m.Y' }}" readonly>
                   </div>
+                  {% else %}
                   <div class="col-md-6">
-                    <select name="doctor" class="form-select" required="">
+                    <input type="date" name="date" class="form-control" required>
+                  </div>
+                  {% endif %}
+                  <div class="col-md-6">
+                    <select id="doctorSelect" name="doctor" class="form-select" required>
                       <option value="">Select Doctor</option>
-                      <option value="dr-sarah-johnson">Dr. Sarah Johnson</option>
-                      <option value="dr-michael-chen">Dr. Michael Chen</option>
-                      <option value="dr-emily-davis">Dr. Emily Davis</option>
-                      <option value="dr-robert-smith">Dr. Robert Smith</option>
-                      <option value="dr-lisa-brown">Dr. Lisa Brown</option>
-                      <option value="dr-david-wilson">Dr. David Wilson</option>
-                      <option value="dr-maria-rodriguez">Dr. Maria Rodriguez</option>
                     </select>
                   </div>
                   <div class="col-12">
@@ -140,4 +153,7 @@
   </section><!-- /Appointmnet Section -->
 
 </main>
+{% endblock %}
+{% block extra_js %}
+  <script src="{% static 'assets/js/appointment.js' %}"></script>
 {% endblock %}
