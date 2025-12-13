@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "debug_toolbar",
+    "accounts",
+    "appointments",
+    "core",
+    "doctors",
 ]
 
 MIDDLEWARE = [
@@ -47,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "clinic.urls"
@@ -54,7 +62,7 @@ ROOT_URLCONF = "clinic.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -98,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "accounts.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -116,7 +125,21 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
