@@ -5957,7 +5957,68 @@ section,
   color: var(--heading-color);
   font-weight: 600;
 }
+/*--------------------------------------------------------------
+# Profile Section
+--------------------------------------------------------------*/
+.auth-form select.auth-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  background: #fff;
+}
 
+.auth-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  resize: vertical;
+}
+
+.auth-divider-top {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.auth-subtitle {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.profile-sep {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 16px 0;
+}
+
+.profile-multiline {
+  display: inline-block;
+  max-width: 240px;
+  text-align: right;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/*--------------------------------------------------------------
+# Privacy Section
+--------------------------------------------------------------*/
 @media print {
   .privacy {
     font-size: 12pt;
@@ -6216,4 +6277,14 @@ section,
   padding-top: 60px;
   padding-bottom: 60px;
   /* Add your styles here */
+}
+
+#main {
+  padding-top: 90px; /* підкрути 90-140 якщо треба */
+}
+
+@media (max-width: 992px) {
+  main {
+    padding-top: 130px;
+  }
 }
