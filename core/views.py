@@ -18,3 +18,6 @@ def services_page(request: HttpRequest) -> HttpResponse:
 
 def doctors_page(request: HttpRequest) -> HttpResponse:
     return render(request, "core/doctors.html")
+
+def contact_page(request: HttpRequest) -> HttpResponse:
+    return render(request, "core/contact.html")
