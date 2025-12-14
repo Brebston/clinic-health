@@ -5,7 +5,7 @@ from doctors.models import DoctorProfile
 @admin.register(DoctorProfile)
 class DoctorProfileAdmin(admin.ModelAdmin):
     list_display = ("id", "doctor_name", "specialty", "department", "years_of_experience")
-    list_filter = ("specialty", "department")
+    list_filter = ("specialty", "department", "stars")
     search_fields = ("user__first_name", "user__last_name", "user__username", "user__email")
     autocomplete_fields = ("user",)
 

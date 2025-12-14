@@ -59,10 +59,24 @@
                   <i class="bi bi-award"></i>
                   <span>{{ doctor.years_of_experience }}+ Years Experience</span>
                 </div>
+
                 <div class="department">
                   <i class="bi bi-building"></i>
                   <span>{{ doctor.get_department_display }}</span>
                 </div>
+                <div class="rating-section">
+                  <div class="stars">
+                    {% for i in "12345"|make_list %}
+                      {% if forloop.counter <= doctor.stars_ceil %}
+                        <i class="bi bi-star-fill"></i>
+                      {% else %}
+                        <i class="bi bi-star"></i>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                  <span class="rating-score">{{ doctor.stars }}</span>
+                  <span class="review-count">({{ doctor.reviews }} reviews)</span>
               </div>
               <a href="{% url 'core:appointment' %}" class="btn-appointment">Book Appointment</a>
             </div>
