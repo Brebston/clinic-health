@@ -5,8 +5,10 @@ from django.views import generic
 from doctors.models import DoctorProfile
 
 
-def index (request: HttpRequest) -> HttpResponse:
-    return render(request, "core/index.html")
+class IndexView(generic.ListView):
+    model = DoctorProfile
+    template_name = "core/index.html"
+    context_object_name = "doctor_list"
 
 
 def about_page(request: HttpRequest) -> HttpResponse:

@@ -1,4 +1,6 @@
-from django.db import models
+import math
+from datetime import timedelta
+from django.utils import timezone
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -37,10 +39,25 @@ class DoctorProfile(models.Model):
     description = models.TextField(max_length=255)
     years_of_experience = models.PositiveIntegerField()
     photo = models.ImageField(upload_to="img/doctors", blank=True, null=True)
+    stars = models.FloatField(max_length=5, blank=True, null=True)
+    reviews = models.IntegerField(blank=True, null=True)
+    last_seen = models.DateTimeField(null=True, blank=True)
 
     def clean(self):
         if self.user.role != self.user.Roles.DOCTOR:
             raise ValidationError("User role must be DOCTOR to have a DoctorProfile.")
+
+    @property
+    def is_online(self):
+        if not self.last_seen:
+            return False
+        return timezone.now() - self.last_seen <= timedelta(minutes=5)
+
+    @property
+    def stars_ceil(self):
+        if self.stars is None:
+            return 0
+        return min(5, math.ceil(self.stars))
 
     def __str__(self):
         return f"Dr. {self.user.first_name} {self.user.last_name}".strip()

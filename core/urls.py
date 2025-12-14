@@ -1,6 +1,6 @@
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.urls import path
-from core.views import (index, about_page,
+from core.views import (IndexView, about_page,
                         departament_page, services_page,
                         DoctorView, contact_page,
                         department_details_page, service_details_page,
@@ -9,7 +9,7 @@ from core.views import (index, about_page,
                         privacy_page)
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
     path("about/", about_page, name="about"),
     path("departaments/", departament_page, name="departament"),
     path("services/", services_page, name="services"),
