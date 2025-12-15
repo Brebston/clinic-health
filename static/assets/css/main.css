@@ -6280,11 +6280,30 @@ section,
 }
 
 #main {
-  padding-top: 90px; /* підкрути 90-140 якщо треба */
+  padding-top: 90px;
 }
 
 @media (max-width: 992px) {
   main {
     padding-top: 130px;
   }
+}
+
+/*--------------------------------------------------------------
+# Button /appointments/
+--------------------------------------------------------------*/
+.btn-book {
+  background: #1e5ad7;
+  border: 0;
+  padding: 12px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-book:hover {
+  background: #1749ad;
 }

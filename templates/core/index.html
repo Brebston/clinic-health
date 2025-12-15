@@ -455,22 +455,33 @@
           <div class="search-section">
             <h3 class="search-title">Find Your Perfect Healthcare Provider</h3>
             <p class="search-subtitle">Search through our comprehensive directory of experienced medical professionals</p>
-            <form class="search-form" action="{% static 'forms/doctor-search.php' %}" method="get">
+            <form class="search-form"
+                  hx-get="."
+                  hx-target="#doctor-results"
+                  hx-swap="innerHTML"
+            >
               <div class="search-input-group">
                 <div class="input-wrapper">
                   <i class="bi bi-person"></i>
-                  <input type="text" class="form-control" name="doctor_name" placeholder="Enter doctor name">
+                  <input type="text"
+                         class="form-control"
+                         name="doctor_name"
+                         placeholder="Enter doctor name"
+                         value="{{ request.GET.doctor_name|default:'' }}"
+                  >
                 </div>
                 <div class="select-wrapper">
                   <i class="bi bi-heart-pulse"></i>
                   <select class="form-select" name="specialty">
                     <option value="">All Specialties</option>
-                    <option value="cardiology">Cardiology</option>
-                    <option value="neurology">Neurology</option>
-                    <option value="orthopedics">Orthopedics</option>
-                    <option value="pediatrics">Pediatrics</option>
-                    <option value="dermatology">Dermatology</option>
-                    <option value="oncology">Oncology</option>
+                    {% for value, label in search_form.fields.specialty.choices %}
+                      {% if value %}
+                        <option value="{{ value }}"
+                          {% if request.GET.specialty == value %}selected{% endif %}>
+                          {{ label }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
                   </select>
                 </div>
                 <button type="submit" class="search-btn">
@@ -483,48 +494,10 @@
         </div>
       </div>
 
-
-      <div class="doctors-grid" data-aos="fade-up" data-aos-delay="300">
-        {% for doctor in doctor_list|slice:6 %}
-        <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="100">
-          <div class="profile-header">
-            <div class="doctor-avatar">
-              <img src="{{ doctor.photo.url }}" alt="Doctor Photo" class="img-fluid">
-              {% if doctor.is_online %}
-                <div class="status-indicator available"></div>
-              {% else %}
-                <div class="status-indicator disabled"></div>
-              {% endif %}
-            </div>
-            <div class="doctor-details">
-              <h4>Dr. {{ doctor.user.get_full_name }}</h4>
-              <span class="specialty-tag">{{ doctor.get_specialty_display }}</span>
-              <div class="experience-info">
-                <i class="bi bi-award"></i>
-                <span>{{ doctor.years_of_experience }} years experience</span>
-              </div>
-            </div>
-          </div>
-          <div class="rating-section">
-            <div class="stars">
-              {% for i in "12345"|make_list %}
-                {% if forloop.counter <= doctor.stars_ceil %}
-                  <i class="bi bi-star-fill"></i>
-                {% else %}
-                  <i class="bi bi-star"></i>
-                {% endif %}
-              {% endfor %}
-            </div>
-            <span class="rating-score">{{ doctor.stars }}</span>
-            <span class="review-count">({{ doctor.reviews }} reviews)</span>
-          </div>
-          <div class="action-buttons">
-            <a href="#" class="btn-secondary">View Details</a>
-            <a href="{% url 'core:appointment' %}" class="btn-primary">Book Now</a>
-          </div>
-        </div><!-- End Doctor Profile -->
-        {% endfor %}
-      </div>
+      <!-- Doctor List -->
+      <div id="doctor-results">
+        {% include "includes/doctor_list.html" %}
+      </div><!-- End Doctor List -->
 
 
       <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
@@ -552,11 +525,11 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 
               <div class="cta-wrapper">
-                <a href="appointment.html" class="primary-cta">
+                <a href="{% url 'core:appointment' %}" class="primary-cta">
                   <span>Schedule Consultation</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
-                <a href="services.html" class="secondary-cta">
+                <a href="{% url 'core:services' %}" class="secondary-cta">
                   <span>Explore Services</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>

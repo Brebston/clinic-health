@@ -43,7 +43,8 @@
           <div class="booking-wrapper">
             <div class="booking-header text-center" data-aos="fade-up" data-aos-delay="200">
               <h2>Schedule Your Appointment</h2>
-              <p>Book your medical appointment in just a few simple steps. Our experienced healthcare professionals are ready to provide you with the best care possible.</p>
+              <p>Book your medical appointment in just a few simple steps. Our experienced healthcare professionals
+                are ready to provide you with the best care possible.</p>
             </div>
 
             <div class="booking-steps" data-aos="fade-up" data-aos-delay="300">
@@ -77,68 +78,66 @@
             </div>
 
             <div class="appointment-form" data-aos="fade-up" data-aos-delay="400">
-              <form action="#" method="post" class="php-email-form">
+              <form action="{% url 'appointments:create' %}" method="post">
                 {% csrf_token %}
+
                 <div class="row gy-4">
                   {% if user.is_authenticated %}
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ request.user.get_full_name }}" readonly>
-                  </div>
-                  <div class="col-md-6">
-                    <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ request.user.email }}" readonly>
-                  </div>
-                  <div class="col-md-6">
-                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" value="{{ request.user.phone }}" readonly>
-                  </div>
-                  {% else %}
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Full Name" required="">
-                  </div>
-                  <div class="col-md-6">
-                    <input type="email" name="email" class="form-control" placeholder="Email Address" required="">
-                  </div>
-                  <div class="col-md-6">
-                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required="">
-                  </div>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control" placeholder="Full Name"
+                             value="{{ request.user.get_full_name }}" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="email" class="form-control" placeholder="Email Address"
+                             value="{{ request.user.email }}" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="tel" class="form-control" placeholder="Phone Number"
+                             value="{{ request.user.phone }}" readonly>
+                    </div>
                   {% endif %}
+
                   <div class="col-md-6">
-                  <select id="specialtySelect"
-                    name="specialty"
-                    class="form-select"
-                    required
-                    data-endpoint="{% url 'doctors:doctors-by-specialty' %}">
+                    <select id="specialtySelect"
+                            name="specialty"
+                            class="form-select"
+                            required
+                            data-endpoint="{% url 'doctors:doctors-by-specialty' %}">
                       <option value="">Select Specialty</option>
                       {% for value, label in specialties %}
                         <option value="{{ value }}">{{ label }}</option>
                       {% endfor %}
                     </select>
                   </div>
-                  {% if user.is_authenticated %}
+
                   <div class="col-md-6">
-                    <input type="text" name="date" class="form-control" value="{{ request.user.date_of_birth|date:'d.m.Y' }}" readonly>
-                  </div>
-                  {% else %}
-                  <div class="col-md-6">
-                    <input type="date" name="date" class="form-control" required>
-                  </div>
-                  {% endif %}
-                  <div class="col-md-6">
-                    <select id="doctorSelect" name="doctor" class="form-select" required>
+                    <select id="doctorSelect" name="doctor" class="form-select" required disabled>
                       <option value="">Select Doctor</option>
                     </select>
                   </div>
-                  <div class="col-12">
-                    <textarea name="message" class="form-control" rows="4" placeholder="Additional notes or symptoms (optional)"></textarea>
+
+                  <div class="col-md-6">
+                    <input id="dayInput" type="date" name="day" class="form-control" required
+                           data-times-endpoint="{% url 'appointments:api-available-times' %}">
                   </div>
+
+                  <div class="col-md-6">
+                    <select id="timeSelect" name="time_str" class="form-select" required disabled>
+                      <option value="">Select time</option>
+                    </select>
+                  </div>
+
                   <div class="col-12">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your appointment has been scheduled. Thank you!</div>
+                    <textarea name="notes" class="form-control" rows="4"
+                              placeholder="Additional notes or symptoms (optional)"></textarea>
+                  </div>
+
+                  <div class="col-12">
                     <button type="submit" class="btn-book">Book Appointment Now</button>
                   </div>
                 </div>
               </form>
-            </div>
+
 
             <div class="emergency-info" data-aos="fade-up" data-aos-delay="500">
               <p><i class="bi bi-exclamation-triangle"></i> For medical emergencies, please call <strong>911</strong> or go to the nearest emergency room.</p>
@@ -147,8 +146,8 @@
           </div>
         </div>
       </div>
-
     </div>
+  </div>
 
   </section><!-- /Appointmnet Section -->
 
