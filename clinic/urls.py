@@ -10,6 +10,7 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("doctors/", include("doctors.urls", namespace="doctors")),
+    path("appointments/", include("appointments.urls", namespace="appointments"))
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:
