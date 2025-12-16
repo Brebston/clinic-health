@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Clinic-Health - Profile{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="card shadow-sm border-0 rounded-4">
+          <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div>
+                <h2 class="mb-1">My Profile</h2>
+                <p class="text-muted mb-0">Account information</p>
+              </div>
+
+              <a href="{% url 'accounts:profile-update' pk=patient.id %}" class="btn btn-outline-primary btn-sm">Edit profile</a>
+            </div>
+
+            <!-- USER INFO -->
+            <div class="profile-grid">
+              <div class="profile-item">
+                <div class="profile-label"><strong>Username</strong></div>
+                <div class="profile-value">{{ request.user.username }}</div>
+              </div>
+
+              <div class="profile-item">
+                <div class="profile-label"><strong>Full name</strong></div>
+                <div class="profile-value">{{ request.user.get_full_name|default:"-" }}</div>
+              </div>
+
+              <div class="profile-item">
+                <div class="profile-label"><strong>Email</strong></div>
+                <div class="profile-value">{{ request.user.email|default:"-" }}</div>
+              </div>
+
+              <div class="profile-item">
+                <div class="profile-label"><strong>Phone</strong></div>
+                <div class="profile-value">{{ request.user.phone|default:"-" }}</div>
+              </div>
+
+              <div class="profile-item">
+                <div class="profile-label"><strong>Role</strong></div>
+                <div class="profile-value">
+                  {% if request.user.role == "patient" %}
+                    <span class="badge text-bg-primary">Patient</span>
+                  {% elif request.user.role == "doctor" %}
+                    <span class="badge text-bg-success">Doctor</span>
+                  {% elif request.user.role == "admin" %}
+                    <span class="badge text-bg-dark">Admin</span>
+                  {% else %}
+                    <span class="badge text-bg-secondary">Unknown</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            {% if request.user.role == "patient" %}
+              <hr class="my-4">
+
+              <h5 class="mb-3">Patient details</h5>
+
+              <div class="profile-grid">
+                <div class="profile-item">
+                  <div class="profile-label"><strong>Date of birth</strong></div>
+                  <div class="profile-value">{{ request.user.date_of_birth|default:"-" }}</div>
+                </div>
+
+                <div class="profile-item">
+                  <div class="profile-label"><strong>SSN</strong></div>
+                  <div class="profile-value">{{ request.user.ssn|default:"-" }}</div>
+                </div>
+
+                <div class="profile-item profile-item--full">
+                  <div class="profile-label"><strong>Address</strong></div>
+                  <div class="profile-value">{{ request.user.address|default:"-" }}</div>
+                </div>
+
+                <div class="profile-item">
+                  <div class="profile-label"><strong>Emergency contact</strong></div>
+                  <div class="profile-value">{{ request.user.emergency_contact_name|default:"-" }}</div>
+                </div>
+
+                <div class="profile-item">
+                  <div class="profile-label"><strong>Emergency phone</strong></div>
+                  <div class="profile-value">{{ request.user.emergency_contact_phone|default:"-" }}</div>
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

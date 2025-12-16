@@ -1,0 +1,109 @@
+{% load static %}
+
+<div class="doctors-grid" data-aos="fade-up" data-aos-delay="300">
+
+  {% if request.headers.HX_Request %}
+    {% for doctor in doctor_list %}
+      <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="100">
+        <div class="profile-header">
+          <div class="doctor-avatar">
+
+            {% if doctor.photo %}
+              <img src="{{ doctor.photo.url }}" alt="Doctor Photo" class="img-fluid">
+            {% else %}
+              <img src="{% static 'assets/img/health/staff-2.webp' %}" alt="Doctor Photo" class="img-fluid">
+            {% endif %}
+
+            {% if doctor.is_online %}
+              <div class="status-indicator available"></div>
+            {% else %}
+              <div class="status-indicator disabled"></div>
+            {% endif %}
+          </div>
+
+          <div class="doctor-details">
+            <h4>Dr. {{ doctor.user.get_full_name }}</h4>
+            <span class="specialty-tag">{{ doctor.get_specialty_display }}</span>
+            <div class="experience-info">
+              <i class="bi bi-award"></i>
+              <span>{{ doctor.years_of_experience }} years experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rating-section">
+          <div class="stars">
+            {% for i in "12345"|make_list %}
+              {% if forloop.counter <= doctor.stars_ceil %}
+                <i class="bi bi-star-fill"></i>
+              {% else %}
+                <i class="bi bi-star"></i>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="rating-score">{{ doctor.stars }}</span>
+          <span class="review-count">({{ doctor.reviews }} reviews)</span>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn-secondary">View Details</a>
+          <a href="{% url 'core:appointment' %}" class="btn-primary">Book Now</a>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No doctors found.</p>
+    {% endfor %}
+
+  {% else %}
+    {% for doctor in doctor_list|slice:":6" %}
+      <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="100">
+        <div class="profile-header">
+          <div class="doctor-avatar">
+
+            {% if doctor.photo %}
+              <img src="{{ doctor.photo.url }}" alt="Doctor Photo" class="img-fluid">
+            {% else %}
+              <img src="{% static 'assets/img/health/staff-2.webp' %}" alt="Doctor Photo" class="img-fluid">
+            {% endif %}
+
+            {% if doctor.is_online %}
+              <div class="status-indicator available"></div>
+            {% else %}
+              <div class="status-indicator disabled"></div>
+            {% endif %}
+          </div>
+
+          <div class="doctor-details">
+            <h4>Dr. {{ doctor.user.get_full_name }}</h4>
+            <span class="specialty-tag">{{ doctor.get_specialty_display }}</span>
+            <div class="experience-info">
+              <i class="bi bi-award"></i>
+              <span>{{ doctor.years_of_experience }} years experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rating-section">
+          <div class="stars">
+            {% for i in "12345"|make_list %}
+              {% if forloop.counter <= doctor.stars_ceil %}
+                <i class="bi bi-star-fill"></i>
+              {% else %}
+                <i class="bi bi-star"></i>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="rating-score">{{ doctor.stars }}</span>
+          <span class="review-count">({{ doctor.reviews }} reviews)</span>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn-secondary">View Details</a>
+          <a href="{% url 'core:appointment' %}" class="btn-primary">Book Now</a>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No doctors found.</p>
+    {% endfor %}
+  {% endif %}
+</div>

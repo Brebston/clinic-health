@@ -1,0 +1,152 @@
+[
+  {
+    "model": "doctors.doctorprofile",
+    "id": 1,
+    "fields": {
+      "specialty": "cardiologist",
+      "department": "cardiology",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "years_of_experience": 15,
+      "photo": "img/doctors/staff-1.webp",
+      "user_id": 8,
+      "stars": 1,
+      "last_seen": null,
+      "reviews": 89
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 2,
+    "fields": {
+      "specialty": "neurologist",
+      "department": "neurology",
+      "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "years_of_experience": 12,
+      "photo": "img/doctors/staff-3.webp",
+      "user_id": 9,
+      "stars": 4.7,
+      "last_seen": "2025-12-14 09:36:30.816694",
+      "reviews": 110
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 3,
+    "fields": {
+      "specialty": "orthopedic",
+      "department": "orthopedics",
+      "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "years_of_experience": 18,
+      "photo": "img/doctors/staff-2.webp",
+      "user_id": 10,
+      "stars": 4.7,
+      "last_seen": null,
+      "reviews": 156
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 4,
+    "fields": {
+      "specialty": "pediatrician",
+      "department": "pediatrics",
+      "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "years_of_experience": 10,
+      "photo": "img/doctors/staff-4.webp",
+      "user_id": 11,
+      "stars": 5,
+      "last_seen": null,
+      "reviews": 204
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 5,
+    "fields": {
+      "specialty": "dermatologist",
+      "department": "dermatology",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+      "years_of_experience": 14,
+      "photo": "img/doctors/staff-5.webp",
+      "user_id": 12,
+      "stars": 4.5,
+      "last_seen": null,
+      "reviews": 74
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 6,
+    "fields": {
+      "specialty": "oncologist",
+      "department": "oncology",
+      "description": "Oncologist\r\nTotam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.",
+      "years_of_experience": 16,
+      "photo": "img/doctors/staff-6.webp",
+      "user_id": 13,
+      "stars": 4.9,
+      "last_seen": null,
+      "reviews": 194
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 7,
+    "fields": {
+      "specialty": "emergency",
+      "department": "emergency",
+      "description": "Explicabo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
+      "years_of_experience": 11,
+      "photo": "img/doctors/staff-7.webp",
+      "user_id": 14,
+      "stars": 4.7,
+      "last_seen": null,
+      "reviews": 65
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 8,
+    "fields": {
+      "specialty": "radiologist",
+      "department": "radiology",
+      "description": "Magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est qui dolorem.",
+      "years_of_experience": 13,
+      "photo": "img/doctors/staff-14.webp",
+      "user_id": 15,
+      "stars": 4.8,
+      "last_seen": null,
+      "reviews": 97
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 9,
+    "fields": {
+      "specialty": "cardiologist",
+      "department": "cardiology",
+      "description": "-",
+      "years_of_experience": 14,
+      "photo": "img/doctors/staff-14_WVFfttc.webp",
+      "user_id": 16,
+      "stars": 4.9,
+      "last_seen": null,
+      "reviews": 127
+    }
+  },
+  {
+    "model": "doctors.doctorprofile",
+    "id": 10,
+    "fields": {
+      "specialty": "pediatrician",
+      "department": "pediatrics",
+      "description": "-",
+      "years_of_experience": 11,
+      "photo": "img/doctors/staff-2_LenPCTt.webp",
+      "user_id": 17,
+      "stars": 5,
+      "last_seen": null,
+      "reviews": 203
+    }
+  }
+]
