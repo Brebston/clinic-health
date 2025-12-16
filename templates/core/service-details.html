@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Clinic-Health - Service Details{% endblock %}
 
@@ -171,7 +172,7 @@
             </div>
             <p>Book your neurological evaluation with our expert team</p>
             <div class="card-footer">
-              <a href="#" class="btn-action">Book Now</a>
+              <a href="{% url 'core:appointment' %}" class="btn-action">Book Now</a>
               <span class="availability">Next available: Tomorrow</span>
             </div>
           </div>

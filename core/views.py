@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -70,6 +71,7 @@ def department_details_page(request: HttpRequest) -> HttpResponse:
 def service_details_page(request: HttpRequest) -> HttpResponse:
     return render(request, "core/service-details.html")
 
+@login_required
 def appointment_page(request: HttpRequest) -> HttpResponse:
     return render(request, "core/appointment.html", {
         "specialties": DoctorProfile.Specialty.choices,

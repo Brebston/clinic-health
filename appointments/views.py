@@ -24,8 +24,6 @@ def appointment_create(request):
     specialties = DoctorProfile.Specialty.choices
 
     if request.method == "POST":
-        # You can either use the form OR raw POST parsing.
-        # Form gives you validation for day/time_str.
         form = AppointmentCreateForm(request.POST)
 
         if not form.is_valid():
@@ -39,7 +37,6 @@ def appointment_create(request):
         if starts_at <= timezone.now():
             return HttpResponseBadRequest("Cannot book in the past")
 
-        # Convert time_str -> time for storing as TimeField
         hh, mm = form.cleaned_data["time_str"].split(":")
         tm = time(int(hh), int(mm))
 
@@ -61,7 +58,6 @@ def appointment_create(request):
 
         return redirect("appointments:my-visits")
 
-    # GET
     form = AppointmentCreateForm()
     return render(
         request,
@@ -133,7 +129,6 @@ def cancel_visit(request, pk: int):
         if appt.patient_id != request.user.id:
             return HttpResponseBadRequest("Not allowed")
 
-    # Optional rule: don't allow cancelling completed appointments
     if appt.status == Appointment.STATUS_COMPLETED:
         return HttpResponseBadRequest("Cannot cancel completed appointment")
 
