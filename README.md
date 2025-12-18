@@ -3,6 +3,11 @@
 Clinic Health is a learning Django project for a medical clinic.  
 The project was created to practice Django fundamentals such as models, views, forms, authentication, and basic business logic.
 
+### Demo:
+- Login: Test
+- Password: Qwerty123!
+- URL: https://clinic-health-meip.onrender.com/
+
 ---
 
 ## Features
