@@ -7,4 +7,4 @@ python manage.py collectstatic --no-input
 
 python manage.py migrate
 
-gumicorn clinic.wsgi:application --workers 1 --threads 10
+gunicorn clinic.wsgi:application --workers 1 --threads 10
