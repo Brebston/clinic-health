@@ -24,6 +24,6 @@ urlpatterns = [
     path("privacy/", privacy_page, name="privacy")
 
 
-] + debug_toolbar_urls()
+]
 
 app_name = "core"

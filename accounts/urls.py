@@ -15,6 +15,6 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
     path("profile/<int:pk>", ProfileDetailView.as_view(), name="profile"),
     path("profile/<int:pk>/update/", ProfileUpdateView.as_view(), name="profile-update")
-] + debug_toolbar_urls()
+]
 
 app_name = "accounts"
