@@ -16,7 +16,8 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
-        login(self.request, self.object)
+        login(self.request, self.object,
+              backend="accounts.backends.EmailOrUsernameBackend")
         return redirect(reverse(
             "accounts:profile",
             kwargs={"pk": self.object.pk}
