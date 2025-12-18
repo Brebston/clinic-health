@@ -1,4 +1,3 @@
-from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib.auth.views import LogoutView
 from django.urls import path, reverse_lazy
 from accounts.views import (CustomLoginView, RegisterView,
