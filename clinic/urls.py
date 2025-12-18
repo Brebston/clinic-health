@@ -1,4 +1,3 @@
-from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
@@ -11,9 +10,10 @@ urlpatterns = [
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("doctors/", include("doctors.urls", namespace="doctors")),
     path("appointments/", include("appointments.urls", namespace="appointments"))
-] + debug_toolbar_urls()
+]
 
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns += static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT
@@ -22,3 +22,6 @@ if settings.DEBUG:
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT
     )
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls))
+    ] + urlpatterns
