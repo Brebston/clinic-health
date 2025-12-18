@@ -2,6 +2,8 @@ services:
   - type: web
     name: clinic-health
     env: python
+    plan: free
+    region: frankfurt
     buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --no-input
